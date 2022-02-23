@@ -1,10 +1,14 @@
 // sports api get 
 
 const loadSportsData = async () => {
+    try {
+        const response = await fetch('https://www.thesportsdb.com/api/v1/json/2/all_sports.php');
+        const data = await response.json();
+        displayData(data);
+    } catch {
+        alert('something wrong')
+    }
 
-    const response = await fetch('https://www.thesportsdb.com/api/v1/json/2/all_sports.php');
-    const data = await response.json();
-    displayData(data);
 
 }
 loadSportsData()
