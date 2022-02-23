@@ -29,3 +29,13 @@ const displayData = (sportsData) => {
         sport.appendChild(div)
     })
 }
+
+// page loading
+
+const pageLoad = () => {
+    const load = document.getElementById('loading');
+    window.addEventListener('load', () => {
+        load.style.display = "none";
+    })
+}
+pageLoad()
