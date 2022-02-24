@@ -28,10 +28,29 @@ const displayData = (sportsData) => {
                             <img src="${data.strSportIconGreen}" class="" height="20px" width="20px" alt="${data.strSport}"><em> ${data.strFormat}</em>
                             <p class="card-text mt-2">${data.strSportDescription.slice(0,100)}</p>
                         </div>
+                        <button class="btn btn-primary mx-auto my-2" onclick="postDetail(${data.idSport})">Detail Now </button>
                     </div>
         `
         sport.appendChild(div)
     })
+}
+// post single view 
+
+const postDetail = async (sportsId) => {
+    const sportsIdUrl = `https://www.thesportsdb.com/api/v1/json/2/all_sports.php?id=${sportsId}`
+    console.log(sportsIdUrl);
+    const res = await fetch(sportsIdUrl);
+    const data = await res.json();
+    singlePostDisplay(data);
+    console.log(data)
+}
+
+// single post display view
+const singlePostDisplay = (postData) => {
+    console.log(postData);
+    const showPost = document.getElementById('single-post');
+    showPost.style.display = 'block'
+
 }
 
 // page loading
